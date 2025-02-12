@@ -3,6 +3,7 @@ import  HomePage  from "./pages/HomePage.vue";
 import { createRouter } from "vue-router";
 import NotFoundPage from "./pages/NotFoundPage.vue";
 import LoginPage from "./pages/LoginPage.vue";
+import SessionPage from './pages/SessionPage.vue'
 const routes= [
     {
         path: '/',
@@ -13,6 +14,10 @@ const routes= [
     },{
         path: '/login',
         component: LoginPage
+    },{
+        path: '/session/:id',
+        name: 'session',
+        component: SessionPage
     }
 ]
 

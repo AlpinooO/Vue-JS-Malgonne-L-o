@@ -36,6 +36,9 @@
 <script lang="ts" setup>
 import { watch, reactive, ref} from "vue";
 import InputValidator from '../utils/input-validator.ts';
+import { useRouter } from 'vue-router';
+
+const router = useRouter();
 
 // const data = reactive({
 //     email: '',
@@ -68,6 +71,20 @@ const submitHandler = async()=> {
     const result = await fetch('users.json');
     const users = await result.json();
     console.log(users);
+
+    const user = users.find((user:{email: string, password: string})=> user.email === email.value) // bonne pratique {email : string, password : string}
+    if (!user){
+        prompt('Utilisateur non trouvé');
+        return
+    } 
+    if (!(user.password === password.value)){
+        alert('Mot de passe incorrect');
+        return
+    }
+
+    console.log('Utilisateur trouvé', user);
+    router.push('/session/' + user.id);
+
 }
 
 </script>
