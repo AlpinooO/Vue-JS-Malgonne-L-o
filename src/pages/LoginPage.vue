@@ -47,14 +47,26 @@ watch(data, (val) =>{
 
 
 const isUserInputValid = (input:string): boolean => {
-    const pattern = new RegExp(/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/);
+    const pattern = new RegExp(/^[a-zA-Z0-9._%+-]}{@[a-zA-Z0-9.-]}{\.[a-zA-Z]{2,4}$/);
     return pattern.test(input)
+
+
 
 }
 if (isUserInputValid("test@test.com")){
     console.log('Email valide');
 } else {
     console.log('Email invalide');
+}
+
+const isUserPasswordValid = (input:string): boolean => {
+    const pattern = new RegExp(/^(?=.*[A-Z] *[a-z])(?=.*\d)(?=.*[@#$:%*?&])[A-Za-z\d @#$:%*?&]{8,}$/);
+    return pattern.test(input)
+}
+if (isUserPasswordValid("1234Test")){
+    console.log('Mot de passe valide');
+} else {
+    console.log('Mot de passe invalide');
 }
 
 
